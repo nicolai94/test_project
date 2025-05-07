@@ -50,7 +50,12 @@ class UserRepository(repository.SQLAlchemyAsyncRepository[User]):
             raise e
 
     async def update_user(self, user_id: int, data: dict) -> User | None:
-        stmt = update(self.model_type).where(self.model_type.id == user_id).values(**data).returning(self.model_type)
+        stmt = (
+            update(self.model_type)
+            .where(self.model_type.id == user_id)
+            .values(**data)
+            .returning(self.model_type)
+        )
         result = await self.session.execute(stmt)
 
         try:

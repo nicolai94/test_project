@@ -42,4 +42,3 @@ class ListUserReadSchema(BaseSchema):
     users: List[UserRead]
 
     model_config = ConfigDict(from_attributes=True)
-

@@ -19,11 +19,6 @@ class BaseSchema(BaseModel):
     model_config = ConfigDict(alias_generator=to_camel, populate_by_name=True)
 
 
-class RunConfig(BaseModel):
-    host: str = "0.0.0.0"
-    port: int = 8000
-
-
 class DatabaseConfig(BaseModel):
     url: PostgresDsn
 
@@ -44,7 +39,6 @@ class Settings(BaseSettings):
         env_prefix="APP_CONFIG__",
         extra="allow",
     )
-    run: RunConfig = RunConfig()
     db: DatabaseConfig
     version: str = "0.1.0"
 

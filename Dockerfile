@@ -8,6 +8,6 @@ RUN pip install poetry --break-system-packages && \
     poetry config virtualenvs.create false && \
     poetry install --no-interaction --no-ansi
 
-COPY src /app/src
+COPY . /app
 
-CMD ["litestar", "--app", "src.main:app", "run", "--host", "0.0.0.0", "--port", "8000"]
+RUN chmod +x /app/start.sh

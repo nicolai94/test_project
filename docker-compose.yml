@@ -1,10 +1,13 @@
 services:
   test_work_backend:
+    command: bash ./start.sh
     build: .
     env_file:
       - .env
     ports:
       - "8000:8000"
+    volumes:
+      - .:/app
     depends_on:
       - test_work_db
 
